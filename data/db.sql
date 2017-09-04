@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Czas generowania: 14 Maj 2017, 21:09
--- Wersja serwera: 5.7.18-0ubuntu0.16.04.1
--- Wersja PHP: 7.0.15-0ubuntu0.16.04.4
+-- Czas generowania: 04 Wrz 2017, 19:50
+-- Wersja serwera: 5.7.19-0ubuntu0.16.04.1
+-- Wersja PHP: 7.0.22-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -39,21 +39,11 @@ CREATE TABLE `Comment` (
 --
 
 INSERT INTO `Comment` (`id`, `userId`, `postId`, `creation_date`, `text`) VALUES
-(1, 1, 1, '2016-04-28 00:00:00', 'that is first comment'),
-(2, 2, 5, '2017-04-23 00:00:00', 'first comment'),
-(6, 2, 5, '2017-05-01 20:00:28', 'this is second comment'),
-(7, 2, 5, '2017-05-01 20:31:28', 'I want to comment'),
-(8, 2, 5, '2017-05-01 20:31:33', 'It is not possible'),
-(9, 2, 5, '2017-05-01 20:33:48', 'one more comment'),
-(10, 2, 5, '2017-05-01 20:34:18', 'more and more comment'),
-(11, 2, 5, '2017-05-01 20:34:51', 'one more comment'),
-(12, 1, 1, '2017-05-01 20:35:10', 'This is second comment'),
-(13, 2, 5, '2017-05-04 20:47:40', 'this is third comment'),
-(16, 1, 19, '2017-05-04 21:26:56', 'no comment'),
-(17, 1, 19, '2017-05-04 21:26:59', 'no comment'),
-(18, 1, 19, '2017-05-04 21:34:15', 'This is second comment'),
-(19, 1, 19, '2017-05-04 21:34:20', 'This is second comment'),
-(22, 1, 23, '2017-05-06 17:46:24', 'komencik');
+(1, 1, 1, '2016-04-28 00:00:00', 'Lorem Ipsum jest tekstem '),
+(2, 2, 5, '2017-04-23 00:00:00', 'Lorem Ipsum jest tekstem '),
+(6, 2, 5, '2017-05-01 20:00:28', 'Lorem Ipsum jest tekstem '),
+(7, 2, 5, '2017-05-01 20:31:28', 'Lorem Ipsum jest tekstem '),
+(24, 103, 24, '2017-08-31 21:07:06', 'Lorem Ipsum jest tekstem ');
 
 -- --------------------------------------------------------
 
@@ -66,7 +56,7 @@ CREATE TABLE `Message` (
   `senderId` int(11) NOT NULL,
   `receiverId` int(11) NOT NULL,
   `isRead` int(11) DEFAULT NULL,
-  `message` varchar(255) NOT NULL,
+  `message` varchar(255) CHARACTER SET utf8 NOT NULL,
   `creationDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -75,12 +65,13 @@ CREATE TABLE `Message` (
 --
 
 INSERT INTO `Message` (`id`, `senderId`, `receiverId`, `isRead`, `message`, `creationDate`) VALUES
-(1, 1, 2, 1, 'Hejka!', '2017-05-07 11:36:31'),
-(2, 1, 2, 0, 'elo', '2017-05-07 11:41:30'),
-(3, 1, 2, 0, 'elo', '2017-05-07 11:42:06'),
-(4, 1, 2, 0, 'there is problem on returning Arabic text, as they are words with combined letters if the second parameter(100) is not at end of Arabic words on the last while ', '2017-05-07 13:41:29'),
-(5, 2, 1, 1, 'witaj!', '2017-05-07 11:30:31'),
-(6, 1, 2, 0, 'Whatsup', '2017-05-08 19:03:06');
+(1, 1, 2, 1, 'Lorem Ipsum jest tekstem ', '2017-05-07 11:36:31'),
+(2, 1, 2, 0, 'Lorem Ipsum jest tekstem ', '2017-05-07 11:41:30'),
+(3, 1, 2, 0, 'Lorem Ipsum jest tekstem ', '2017-05-07 11:42:06'),
+(4, 1, 2, 0, 'Lorem Ipsum jest tekstem ', '2017-05-07 13:41:29'),
+(5, 2, 1, 1, 'Lorem Ipsum jest tekstem ', '2017-05-07 11:30:31'),
+(6, 1, 2, 0, 'Lorem Ipsum jest tekstem ', '2017-05-08 19:03:06'),
+(8, 103, 1, 1, 'fdgfhgjhkjl;l', '2017-08-31 21:06:43');
 
 -- --------------------------------------------------------
 
@@ -91,7 +82,7 @@ INSERT INTO `Message` (`id`, `senderId`, `receiverId`, `isRead`, `message`, `cre
 CREATE TABLE `Tweet` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `tekst` varchar(140) NOT NULL,
+  `tekst` varchar(600) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
   `creationDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -100,16 +91,18 @@ CREATE TABLE `Tweet` (
 --
 
 INSERT INTO `Tweet` (`id`, `userId`, `tekst`, `creationDate`) VALUES
-(1, 1, 'hohoho to jest pierwszy tweet', '2017-04-20'),
-(2, 1, 'Tweet2', '2017-04-19'),
-(5, 2, 'tweet3', '2017-03-01'),
-(19, 2, 'tweet4', '2017-01-01'),
-(20, 1, 'hello world', '2017-05-01'),
-(21, 1, 'hello world', '2017-05-01'),
-(22, 1, 'hello world', '2017-05-01'),
-(23, 1, 'Hejka!', '2017-05-06'),
-(24, 1, 'Hejka!', '2017-05-06'),
-(25, 1, 'What a beautiful day!', '2017-05-08');
+(1, 1, 'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ', '2017-04-20'),
+(2, 1, 'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ', '2017-04-19'),
+(5, 2, 'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ', '2017-03-01'),
+(19, 2, 'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ', '2017-01-01'),
+(20, 1, 'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ', '2017-05-01'),
+(21, 1, 'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ', '2017-05-01'),
+(22, 1, 'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ', '2017-05-01'),
+(23, 1, 'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ', '2017-05-06'),
+(24, 1, 'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ', '2017-05-06'),
+(25, 1, 'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ', '2017-05-08'),
+(66, 103, 'qwerf', '2017-08-31'),
+(67, 103, 'Ã³Ã³Ã³Ã³Å‚Å‚Å‚Å‚Å‚Å„Å„Å„Å„ÅºÅºÅºÅºÅºÅº', '2017-08-31');
 
 -- --------------------------------------------------------
 
@@ -129,17 +122,16 @@ CREATE TABLE `Users` (
 --
 
 INSERT INTO `Users` (`id`, `username`, `email`, `hash_password`) VALUES
-(1, 'yololo', 'tt@tt.pl', 'kotik'),
-(2, 'yol', 'oo@tt.pl', 'komonso'),
-(3, 'Jan', 'lolo@wp.pl', 'pqwerty'),
-(4, 'Emilka', 'emilka@wp.pl', 'emilka'),
-(5, 'user', 'user@yahoo.com', 'userek'),
-(6, 'user6', 'user@as.co', 'pofdanl'),
-(7, 'Kot', 'dbkwbdk@op.pl', 'pokbl'),
-(8, 'Ted', 'ted@sm.cm', 'uvluivyliu'),
-(92, 'Ian', 'ian@re.re', 'fdnol'),
-(94, 'Aaa', 'aaa@sp.ps', 'vgkhvj'),
-(99, 'Pololo', 'goolk@wp.fl', 'bjnbo');
+(1, 'test', 'test@test.pl', 'qwerty'),
+(2, 'test2', 'test2@test.pl', 'qwerty'),
+(3, 'test3', 'test3@test.pl', 'qwerty'),
+(4, 'test4', 'test4@test.pl', 'qwerty'),
+(5, 'test5', 'test5@test.pl', 'qwerty'),
+(6, 'test6', 'test6@test.pl', 'qwerty'),
+(7, 'test7', 'test7@test.pl', 'qwerty'),
+(8, 'test8', 'test8@test.pl', 'qwerty'),
+(100, 'sdf', 'test20@test.pl', 'qwerrty'),
+(103, 'qw', 'qw@qw.pl', '$2y$05$RqViUBbRhDzIBBR8KXj3qO/./hhDq.ZBFNj0MTKoLt12J3rBk9IJ6');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -183,22 +175,22 @@ ALTER TABLE `Users`
 -- AUTO_INCREMENT dla tabeli `Comment`
 --
 ALTER TABLE `Comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT dla tabeli `Message`
 --
 ALTER TABLE `Message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT dla tabeli `Tweet`
 --
 ALTER TABLE `Tweet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 --
 -- AUTO_INCREMENT dla tabeli `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 --
 -- Ograniczenia dla zrzutów tabel
 --
